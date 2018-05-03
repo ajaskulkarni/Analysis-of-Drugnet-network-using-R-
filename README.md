@@ -1,4 +1,4 @@
-# Analysis of Drugnet network using R
+# Analysis of Drugnet to reduce drug spread and understand local structures in the network
 
 In this project “Drugnet” network has been analyzed to find important nodes as well as underlaying structures in the network. I found 
 that the network is male dominated and high percentage of participants belongs from Latino ethnicity. To find popularity of participants 
