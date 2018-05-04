@@ -323,31 +323,31 @@ dev.off()
 
 # Interactive network plot
 
-#library(igraph)
-#library(magrittr)
+library(igraph)
+library(magrittr)
 #install.packages("visNetwork")
-#library(visNetwork)
-#library(data.table)
+library(visNetwork)
+library(data.table)
 
-#graph =  graph_from_adjacency_matrix(m, mode = "directed")
-#graph = simplify(graph)
+graph =  graph_from_adjacency_matrix(m, mode = "directed")
+graph = simplify(graph)
 
-#V(graph)$in_degree = centr_degree(graph, mode = "in")
+V(graph)$indegree = centr_degree(graph, mode = "in")$res
 
-#nodes = get.data.frame(graph, what = "vertices")
-#nodes = data.frame(id = nodes$names, title = nodes$name,
+nodes = get.data.frame(graph, what = "vertices")
+nodes = data.frame(id = nodes$name, title = nodes$name,
                    group = nodes$indegree, indegree = nodes$indegree)
-#setnames(nodes, "indegree", "in-degree centrality")
-#nodes = nodes[order(nodes$id, decreasing = F),]
+setnames(nodes, "indegree", "in-degree centrality")
+nodes = nodes[order(nodes$id, decreasing = F),]
 
-#edges = get.data.frame(graph, what="edges")[1:2]
-#plot = visNetwork(nodes, edges, height = "500px", width = "100%",
-#           main = "In-degree centrality") %>%
-#  visOptions(selectedBy = "in-degree centrality", highlightNearest = TRUE, nodesIdSelection = TRUE)%>%
-#  visPhysics(stabilization = FALSE) %>%
-#  visEdges(arrows = "to") 
+edges = get.data.frame(graph, what="edges")[1:2]
+plot = visNetwork(nodes, edges, height = "500px", width = "100%",
+           main = "In-degree centrality") %>%
+  visOptions(selectedBy = "in-degree centrality", highlightNearest = TRUE, nodesIdSelection = TRUE)%>%
+  visPhysics(stabilization = FALSE) %>%
+  visEdges(arrows = "to") 
 
-#visSave(plot, file = "indegree.html", selfcontained = TRUE, background = "white")
+visSave(plot, file = "indegree.html", selfcontained = TRUE, background = "white")
 
 # --------------------------------------------------------------------------------------------
 indeg = degree(net,cmode="indegree")
